@@ -1,0 +1,12 @@
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+
+    Note right of User: El usuario escribe la nota que quiere dejar
+    User->>Browser: Hace clic en el botón "Save"
+    Note right of Browser: JS recoge el contenido y la fecha
+    Browser->>Server: POST /new_note_spa con nota en JSON
+    Server-->>Browser: Respuesta 201 Created (sin redirección)
+    Note right of Browser: Agrega la nueva nota al estado local
+    Browser->>Browser: Renderiza lista de notas incluyendo la nueva
