@@ -1,0 +1,11 @@
+sequenceDiagram
+    participant Browser
+    participant Server
+
+    Browser->>Server: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+    Server-->>Browser: Devuelve el HTML
+    Browser->>Server: GET /main.js
+    Server-->>Browser: Devuelve archivo JavaScript
+    Browser->>Server: GET /data.json
+    Server-->>Browser: Devuelve lista de notas en JSON
+    Note right of Browser: JavaScript procesa y renderiza las notas del archivo JSON

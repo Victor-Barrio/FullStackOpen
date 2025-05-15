@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+
+    Note right of User: El usuario escribe la nota que quiere dejar
+    User->>Browser: Le da al boton de "Save"
+    Note right of Browser: El navegador guarda el texto de la nota
+    Browser->>Server: POST /new_note con contenido JSON
+    Server-->>Browser: Redirección (HTTP 302) al link
+    Browser->>Server: Hace una nueva solicitud GET
+    Server-->>Browser: Devuelve HTML
+    Browser->>Server: GET /main.js
+    Server-->>Browser: Devuelve main.js
+    Browser->>Server: GET /data.json
+    Server-->>Browser: Devuelve lista de notas (JSON)
+    Note right of Browser: Renderiza notas actualizadas
